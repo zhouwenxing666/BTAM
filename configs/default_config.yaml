@@ -1,0 +1,38 @@
+# Basic Config
+training: 1
+seed: 42
+use_gpu: True
+gpu: 0
+
+# Data
+data_name: 'compas' # 'airbnb', 'har', 'compas', 'MNIST', 'CelebA', 'synthetic_regression', 'synthetic_classification'
+checkpoints: './logs/checkpoints/'
+results: './logs/results/'
+
+# Model: BATM_TaylorNetwork (Lower-level)
+input_layer: 'linear'
+hidden_dims: '64,64,32'
+concept_dropout: 0.1
+order: 2
+rank: 8
+initial: 'Taylor'
+batchnorm: True
+output_penalty: 1.0e-4
+encode_concepts: True
+
+# Optimization
+num_workers: 8
+batch_size: 1024
+num_epochs: 100
+log_interval: 10
+
+# Bilevel Parameters
+lower_lr: 0.01
+upper_lr: 0.01
+patience: 10
+decay: 0.5
+penalty_coef: 1.0e-5 # Sparsity penalty coefficient
+
+# W&B Logging
+wandb_project: 'BATM-Project'
+wandb_entity: 'your_entity'
